@@ -21,8 +21,7 @@ class AccountScreen extends StatelessWidget {
                 height: 30,
               ),
               CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/159136735?v=4"),
+                backgroundImage: NetworkImage(ImageConstant.profilepic),
                 radius: 50,
               ),
               SizedBox(
@@ -39,6 +38,13 @@ class AccountScreen extends StatelessWidget {
                 height: 30,
               ),
               CustomButton(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ));
+                },
                 text: "log in",
                 BottonColors: ColorsConstants.primaryblue,
               ),
@@ -73,12 +79,14 @@ class AccountScreen extends StatelessWidget {
           textAlign: TextAlign.center,
           text: TextSpan(
               text: "Dont have an account?",
-              style: TextStyle(color: Colors.black.withOpacity(.4)),
+              style: TextStyle(
+                  color: ColorsConstants.primaryBlack.withOpacity(.4)),
               children: [
                 TextSpan(
                     text: "Sign up",
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold))
+                        color: ColorsConstants.primaryBlack,
+                        fontWeight: FontWeight.bold))
               ]),
         ),
       ),
