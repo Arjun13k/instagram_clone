@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/constant/image_constant.dart';
+import 'package:instagram_clone/dummyDb.dart';
+import 'package:instagram_clone/view/home_screen/widgets/custom_card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,20 +19,30 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.camera_alt_outlined,
         ),
         centerTitle: true,
-        title: Image.asset(ImageConstant.appnamepng),
+        title: Image.asset(
+          ImageConstant.appnamepng,
+          scale: 1.2,
+        ),
         actions: [
-          Image.asset("asset/image/IGTV.png"),
-          SizedBox(
-            width: 10,
-          ),
-          Image.asset("asset/image/Messanger.png"),
-          SizedBox(
-            width: 10,
-          )
+          IconButton(onPressed: () {}, icon: Icon(Icons.tv)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.share))
         ],
       ),
       body: Column(
-        children: [],
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                  DummyDb.listCircle.length,
+                  (index) => CustomCardWidget(
+                        proPic: DummyDb.listCircle[index]["profile"],
+                        userName: DummyDb.listCircle[index]["userName"],
+                        isLive: DummyDb.listCircle[index]["isLive"],
+                      )),
+            ),
+          )
+        ],
       ),
     );
   }
