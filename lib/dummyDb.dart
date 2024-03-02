@@ -42,4 +42,17 @@ class DummyDb {
       "isLive": false
     }
   ];
+  static const List listpost = [
+    {
+      "profilepic": "",
+      "userName": "",
+      "subMessage": "",
+      "verification": "",
+      "image": "",
+      "circleavathar": "",
+      "likedfollower": "",
+      "like": "",
+      "discreptionmsg": ""
+    },
+  ];
 }

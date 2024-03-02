@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/constant/image_constant.dart';
 import 'package:instagram_clone/dummyDb.dart';
 import 'package:instagram_clone/view/home_screen/widgets/custom_card_widget.dart';
+import 'package:instagram_clone/view/home_screen/widgets/custom_colum_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,21 +29,24 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(onPressed: () {}, icon: Icon(Icons.share))
         ],
       ),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                  DummyDb.listCircle.length,
-                  (index) => CustomCardWidget(
-                        proPic: DummyDb.listCircle[index]["profile"],
-                        userName: DummyDb.listCircle[index]["userName"],
-                        isLive: DummyDb.listCircle[index]["isLive"],
-                      )),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                    DummyDb.listCircle.length,
+                    (index) => CustomCardWidget(
+                          proPic: DummyDb.listCircle[index]["profile"],
+                          userName: DummyDb.listCircle[index]["userName"],
+                          isLive: DummyDb.listCircle[index]["isLive"],
+                        )),
+              ),
             ),
-          )
-        ],
+            CustomColumWidget()
+          ],
+        ),
       ),
     );
   }
