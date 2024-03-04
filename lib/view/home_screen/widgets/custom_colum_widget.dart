@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/constant/color_constant.dart';
-import 'package:instagram_clone/core/constant/image_constant.dart';
 
 class CustomColumWidget extends StatefulWidget {
-  const CustomColumWidget({super.key});
-
+  const CustomColumWidget(
+      {super.key,
+      this.verification = false,
+      required this.username,
+      required this.proic,
+      required this.dispalyMessage,
+      required this.circleimage,
+      required this.messageLiked,
+      required this.likes,
+      required this.discreptionMessage,
+      required this.postpic});
+  final bool verification;
+  final String username;
+  final String proic;
+  final String dispalyMessage;
+  final String circleimage;
+  final String messageLiked;
+  final int likes;
+  final String discreptionMessage;
+  final List<String> postpic;
   @override
   State<CustomColumWidget> createState() => _CustomColumWidgetState();
 }
 
-List<String> postpic = [
-  "https://images.pexels.com/photos/18509324/pexels-photo-18509324/free-photo-of-blooming-white-buttecup-flower.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-  "https://images.pexels.com/photos/9589650/pexels-photo-9589650.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-  "https://images.pexels.com/photos/19859148/pexels-photo-19859148/free-photo-of-wild-roes-in-forest.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-];
 int pages = 1;
 
 class _CustomColumWidgetState extends State<CustomColumWidget> {
@@ -26,22 +38,24 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
           ListTile(
             leading: CircleAvatar(
               radius: 20,
-              backgroundImage: NetworkImage(ImageConstant.profilepic),
+              backgroundImage: NetworkImage(widget.proic),
             ),
             title: Row(
               children: [
-                Text("arj__u"),
-                SizedBox(
-                  width: 5,
-                ),
-                Icon(
-                  Icons.verified,
-                  color: ColorsConstants.primaryblue,
-                  size: 20,
-                )
+                Text(widget.username),
+                if (widget.verification) ...[
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.verified,
+                    color: ColorsConstants.primaryblue,
+                    size: 15,
+                  )
+                ]
               ],
             ),
-            subtitle: Text("Tokyo,Japan"),
+            subtitle: Text(widget.dispalyMessage),
             trailing: Icon(Icons.more_horiz),
           ),
           Stack(children: [
@@ -52,11 +66,11 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                   pages = value + 1;
                   setState(() {});
                 },
-                itemCount: postpic.length,
+                itemCount: widget.postpic.length,
                 itemBuilder: (context, index) => Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(postpic[index]),
+                          image: NetworkImage(widget.postpic[index]),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -70,7 +84,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Text(
-                    "$pages/${postpic.length}",
+                    "$pages/${widget.postpic.length}",
                     style: TextStyle(color: ColorsConstants.primarywhite),
                   ),
                 ))
@@ -103,7 +117,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
-                    postpic.length,
+                    widget.postpic.length,
                     (index) => Padding(
                           padding: EdgeInsets.only(left: 3),
                           child: CircleAvatar(
@@ -123,6 +137,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
             child: Row(
               children: [
                 CircleAvatar(
+                  backgroundImage: NetworkImage(widget.circleimage),
                   radius: 9,
                 ),
                 SizedBox(
@@ -133,7 +148,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                   width: 5,
                 ),
                 Text(
-                  "fat_boy",
+                  widget.messageLiked,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -144,7 +159,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                   width: 5,
                 ),
                 Text(
-                  "38,222",
+                  widget.likes.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -155,12 +170,13 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
             child: Container(
               child: Row(
                 children: [
-                  Text("arj__u", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(widget.username,
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(
                     width: 5,
                   ),
                   Text(
-                    "Freshness and beauty always to remember...",
+                    widget.discreptionMessage,
                   )
                 ],
               ),

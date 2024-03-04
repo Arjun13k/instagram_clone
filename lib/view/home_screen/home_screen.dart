@@ -44,7 +44,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         )),
               ),
             ),
-            CustomColumWidget()
+            Column(
+              children: List.generate(
+                  DummyDb.listpost.length,
+                  (index) => CustomColumWidget(
+                        verification: DummyDb.listpost[index]["verification"],
+                        username: DummyDb.listpost[index]["userName"],
+                        proic: DummyDb.listpost[index]["profilepic"],
+                        dispalyMessage: DummyDb.listpost[index]["subMessage"],
+                        circleimage: DummyDb.listpost[index]["circleavathar"],
+                        messageLiked: DummyDb.listpost[index]["likedfollower"],
+                        likes: DummyDb.listpost[index]["like"],
+                        discreptionMessage: DummyDb.listpost[index]
+                            ["discreptionmsg"],
+                        postpic: DummyDb.listpost[index]["image"],
+                      )),
+            )
           ],
         ),
       ),

@@ -47,8 +47,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
             showSelectedLabels: false,
             items: [
               BottomNavigationBarItem(
+                  activeIcon: Icon(Icons.home_filled),
                   icon: Icon(
-                    Icons.home_filled,
+                    Icons.home,
                     size: 30,
                   ),
                   label: "home"),
