@@ -3,6 +3,7 @@ import 'package:instagram_clone/core/constant/image_constant.dart';
 import 'package:instagram_clone/view/account_screen/account_screen.dart';
 import 'package:instagram_clone/view/favorate_screen/favorate_screen.dart';
 import 'package:instagram_clone/view/home_screen/home_screen.dart';
+import 'package:instagram_clone/view/post_screen/post_screen.dart';
 import 'package:instagram_clone/view/profile_screen/profile_screen.dart';
 import 'package:instagram_clone/view/search_screen/search_screen.dart';
 
@@ -37,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AccountScreen(),
+                      builder: (context) => PostScreen(),
                     ));
               }
             },

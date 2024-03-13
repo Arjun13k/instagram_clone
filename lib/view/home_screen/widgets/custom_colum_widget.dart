@@ -42,7 +42,10 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
             ),
             title: Row(
               children: [
-                Text(widget.username),
+                Text(
+                  widget.username,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 if (widget.verification) ...[
                   SizedBox(
                     width: 5,
@@ -90,7 +93,7 @@ class _CustomColumWidgetState extends State<CustomColumWidget> {
                 ))
           ]),
           SizedBox(
-            height: 5,
+            height: 10,
           ),
           Row(
             children: [
